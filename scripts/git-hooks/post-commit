@@ -1,0 +1,7 @@
+#!/bin/sh
+# Safety net: if Cursor still slipped attribution in, rewrite the commit.
+MSG=$(git log -1 --pretty=%B)
+if printf '%s' "$MSG" | grep -qi 'co-authored-by:.*cursor\|cursoragent@cursor\.com\|made-with:.*cursor'; then
+  printf '%s\n' "$MSG" | grep -vi 'co-authored-by:.*cursor' | grep -vi 'cursoragent@cursor\.com' | grep -vi 'made-with:.*cursor' > "$(git rev-parse --git-dir)/COMMIT_MSG_CLEAN"
+  GIT_EDITOR=true git -c core.hooksPath=NUL commit --amend -F "$(git rev-parse --git-dir)/COMMIT_MSG_CLEAN" --no-verify
+fi
