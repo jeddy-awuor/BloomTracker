@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-gradient-to-br from-pink-950 via-[#1a0a14] to-pink-950 text-pink-50 antialiased;
+    height: 100%;
+  }
+
+  ::selection {
+    @apply bg-pink-500/40 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-pink-950/50;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-pink-500/40;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-pink-400/60;
+  }
+}
