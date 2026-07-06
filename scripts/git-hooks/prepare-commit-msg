@@ -1,8 +1,0 @@
-#!/bin/sh
-# Strip Cursor attribution from commit messages before they are finalized.
-if [ -f "$1" ]; then
-  sed -i.bak '/[Cc]o-authored-by:.*[Cc]ursor/d' "$1"
-  sed -i.bak '/[Cc]o-authored-by:.*cursoragent@cursor\.com/d' "$1"
-  sed -i.bak '/Made-with:.*[Cc]ursor/d' "$1"
-  rm -f "$1.bak"
-fi
